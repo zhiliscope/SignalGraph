@@ -1,18 +1,26 @@
 # SignalGraph
 
-**Turn messy information into structured relationship graphs.**
+**Turn unstructured text into explainable, queryable knowledge graphs with deterministic extraction.**
 
-Extract entities, relationships, evidence, and knowledge graphs from news,
-articles, notes, reports, research papers, and any unstructured text.
+SignalGraph extracts entities, relationships, evidence, and metadata from
+unstructured text and organizes them into structured knowledge graphs. Its
+rule-based pipeline requires no LLMs and has zero runtime dependencies.
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
-![Cross Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
-![CLI](https://img.shields.io/badge/interface-CLI-4c8bf5.svg)
 ![Pure Python](https://img.shields.io/badge/implementation-pure%20Python-blue.svg)
 ![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)
+![CLI](https://img.shields.io/badge/interface-CLI-4c8bf5.svg)
+![Cross Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
 ![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#contributing)
+
+## Highlights
+
+- Deterministic rule-based extraction
+- Explainable relationships with source evidence
+- In-memory knowledge graph querying
+- Pure Python with zero external runtime dependencies
 
 ## Example
 
