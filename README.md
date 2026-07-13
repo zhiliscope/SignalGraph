@@ -1,16 +1,10 @@
-# SignalGraph
+> **Connect what was never connected.**
 
-> Connect scattered information.
+SignalGraph turns scattered information into connected knowledge.
 
-SignalGraph transforms fragmented information into connected, structured
-relationships.
+Instead of leaving facts isolated across articles, notes, reports, and research papers, SignalGraph discovers explicit relationships between them and organizes everything into a structured network that can be explored, queried, exported, and reused.
 
-It extracts entities, explicit relationships, evidence, timestamps, and
-metadata from unstructured text, then organizes them into a structure that can
-be explored, queried, exported, and reused.
-
-SignalGraph is deterministic, rule-based, explainable, pure Python, and has
-zero runtime dependencies.
+Built with deterministic, rule-based extraction, explainable evidence, and zero external AI dependencies.
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
