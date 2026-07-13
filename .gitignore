@@ -51,6 +51,12 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# SignalGraph generated output
+/output.json
+/output.md
+/subgraph.json
+/subgraph.md
+
 # Translations
 *.mo
 *.pot

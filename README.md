@@ -10,6 +10,56 @@ The world produces massive amounts of information every day, but meaningful conn
 
 SignalGraph explores how information can be collected, structured, and represented as a dynamic graph.
 
+## Usage
+
+Analyze a UTF-8 TXT or Markdown file:
+
+```bash
+python3 -m backend.cli analyze example.txt
+```
+
+Analyze text directly:
+
+```bash
+python3 -m backend.cli analyze --text "OpenAI released GPT-4o in 2024."
+```
+
+Choose the JSON and Markdown output paths:
+
+```bash
+python3 -m backend.cli analyze example.md --json result.json --markdown result.md
+```
+
+SignalGraph currently supports `.txt` and `.md` input files. By default, it
+creates `output.json` and `output.md`; use `--no-json` or `--no-markdown` to
+disable either format.
+
+## Graph Exploration
+
+Explore a previously exported SignalGraph JSON file:
+
+```bash
+python3 -m backend.cli path output.json microsoft chatgpt
+python3 -m backend.cli neighbors output.json openai --direction both
+python3 -m backend.cli stats output.json
+python3 -m backend.cli subgraph output.json openai --depth 2
+```
+
+The same graph queries are available through Python:
+
+```python
+from backend.pipeline import SignalGraphPipeline
+
+text = (
+    "Microsoft invested in OpenAI. "
+    "OpenAI created GPT. "
+    "GPT powers ChatGPT."
+)
+graph = SignalGraphPipeline().analyze(text)
+path = graph.find_path("microsoft", "chatgpt")
+print(graph.format_path(path))
+```
+
 Instead of viewing information as isolated pieces, SignalGraph focuses on understanding:
 
 - How entities are connected
@@ -40,14 +90,13 @@ Insight & Visualization
 
 ## Features
 
-🚧 Currently under development
-
-- [ ] Information collection from public sources
-- [ ] Entity extraction and classification
-- [ ] Relationship graph generation
-- [ ] Interactive graph visualization
-- [ ] Timeline and trend analysis
-- [ ] AI-assisted information analysis
+- [x] TXT and Markdown parsing
+- [x] Deterministic entity and relationship extraction
+- [x] Relationship evidence and source context
+- [x] In-memory knowledge graph generation
+- [x] JSON and Markdown export
+- [x] Graph path, neighbor, subgraph, and statistics queries
+- [x] Command-line interface
 
 ## Example
 
@@ -81,15 +130,10 @@ SignalGraph aims to reveal the hidden structure behind fragmented information.
 
 ## Technology Stack
 
-Planned:
-
-- Python
-- Natural Language Processing (NLP)
-- Knowledge Graph
-- Graph Algorithms
-- React
-- TypeScript
-- Data Visualization
+- Python standard library
+- Deterministic text processing
+- Knowledge graph data structures
+- Breadth-first graph algorithms
 
 ## Roadmap
 
@@ -105,15 +149,15 @@ Planned:
 - Extract entities and relationships
 - Process public information sources
 
-### Phase 3 — Visualization
+### Phase 3 — Extraction Expansion
 
-- Build interactive knowledge graph interface
-- Add timeline and relationship exploration
+- Add more relationship patterns
+- Support additional text-based document formats
 
-### Phase 4 — Intelligence Layer
+### Phase 4 — Analysis Layer
 
-- Add AI-assisted analysis
-- Discover patterns and connections
+- Add configurable extraction rules
+- Expand graph analysis capabilities
 
 ## Why SignalGraph?
 
