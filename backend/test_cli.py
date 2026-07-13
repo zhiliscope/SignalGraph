@@ -39,10 +39,16 @@ def run_test() -> None:
         assert direct.returncode == 0, direct.stderr
         assert "SignalGraph Analysis Complete" in direct.stdout
         assert "Source: command-line-input" in direct.stdout
+        assert "Entities: 2" in direct.stdout
         assert "OpenAI --[released]--> GPT-4o" in direct.stdout
         assert (temp_path / "output.json").is_file()
         assert (temp_path / "output.md").is_file()
         exported = json.loads((temp_path / "output.json").read_text("utf-8"))
+        assert {entity["id"] for entity in exported["entities"]} == {
+            "openai",
+            "gpt-4o",
+        }
+        assert exported["relationships"][0]["timestamp"] == "2024"
         assert exported["relationships"][0]["source_name"] == "command-line-input"
 
         text_file = temp_path / "example.txt"

@@ -62,6 +62,10 @@ class EntityExtractor:
         "University",
     )
 
+    def __init__(self, include_years: bool = False) -> None:
+        """Configure whether four-digit years become standalone entities."""
+        self.include_years = include_years
+
     def extract(self, sentences: list[str]) -> list[Entity]:
         """Return unique entities in their first-seen order."""
         entities: dict[str, Entity] = {}
@@ -70,7 +74,8 @@ class EntityExtractor:
             candidates = [
                 match.group() for match in self._name_pattern.finditer(sentence)
             ]
-            candidates.extend(self._year_pattern.findall(sentence))
+            if self.include_years:
+                candidates.extend(self._year_pattern.findall(sentence))
 
             for name in candidates:
                 name = name.strip()
