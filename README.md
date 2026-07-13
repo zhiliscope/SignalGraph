@@ -1,49 +1,22 @@
 # SignalGraph
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+**Turn messy information into structured relationship graphs.**
+
+Extract entities, relationships, evidence, and knowledge graphs from news,
+articles, notes, reports, research papers, and any unstructured text.
+
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+![Cross Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
+![CLI](https://img.shields.io/badge/interface-CLI-4c8bf5.svg)
+![Pure Python](https://img.shields.io/badge/implementation-pure%20Python-blue.svg)
+![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)
 ![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)
-![Interface: CLI](https://img.shields.io/badge/interface-CLI-4c8bf5.svg)
-![Platform: Cross Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#contributing)
-
-SignalGraph is a Python framework and command-line tool for converting unstructured text into evidence-backed knowledge graphs.
-
-## Introduction
-
-Useful relationships are often distributed across articles, notes, research,
-documentation, and other text. SignalGraph provides a deterministic pipeline
-for turning that fragmented information into entities and explicit
-relationships that can be exported or queried.
-
-SignalGraph uses the Python standard library. It does not call external models
-or services, and it only extracts relationships expressed by supported rules.
-Each extracted relationship can retain its source sentence, sentence index,
-source name, timestamp, and confidence value.
-
-## Features
-
-- Parse UTF-8 plain-text and Markdown input.
-- Extract named entities with deterministic, rule-based heuristics.
-- Extract explicit relationships for the supported relation vocabulary:
-  `released`, `created`, `developed`, `invested_in`, `uses`, `works_with`,
-  `part_of`, `related_to`, and `powers`.
-- Preserve sentence-level evidence, source context, timestamps, and confidence.
-- Keep four-digit years as relationship timestamps instead of standalone
-  entities by default.
-- Build and query an in-memory directed knowledge graph.
-- Find entities by ID, name, or type.
-- Query incoming, outgoing, or bidirectional neighbors.
-- Find shortest directed or undirected paths with breadth-first search.
-- Create depth-limited connected subgraphs.
-- Calculate entity, relationship, type, and isolation statistics.
-- Export graphs to JSON and Markdown.
-- Load and validate previously exported SignalGraph JSON.
-- Analyze and explore graphs through a command-line interface.
 
 ## Example
 
-### Input text
+### Input
 
 ```text
 Microsoft invested in OpenAI.
@@ -51,23 +24,65 @@ OpenAI created GPT.
 GPT powers ChatGPT.
 ```
 
-### Extracted relationships
+↓
+
+### Output
 
 ```text
-Microsoft --[invested_in]--> OpenAI
-OpenAI --[created]--> GPT
-GPT --[powers]--> ChatGPT
+Microsoft ──invested_in──▶ OpenAI
+OpenAI ──created────────▶ GPT
+GPT ──powers───────────▶ ChatGPT
 ```
 
-### Graph exploration
+SignalGraph automatically transforms raw text into a queryable relationship
+graph.
 
-```bash
-python3 -m backend.cli path output.json microsoft chatgpt
-```
+## Why SignalGraph?
 
-```text
-Microsoft --[invested_in]--> OpenAI --[created]--> GPT --[powers]--> ChatGPT
-```
+- **Deterministic** — extraction follows explicit, repeatable rules.
+- **Lightweight** — the framework has a small standard-library codebase.
+- **Explainable** — relationships retain the sentence that produced them.
+- **Transparent** — rules, graph models, and query algorithms are inspectable.
+- **Reusable** — pipeline components can be imported independently.
+- **Pure Python** — the implementation requires Python 3.9 or newer.
+- **Zero external models** — analysis does not call model APIs or services.
+- **Easy integration** — graphs can be queried in Python or exchanged as JSON.
+
+## Features
+
+### Extraction
+
+- Parse UTF-8 plain-text and Markdown input.
+- Extract named entities with deterministic, rule-based heuristics.
+- Extract explicit relationships for `released`, `created`, `developed`,
+  `invested_in`, `uses`, `works_with`, `part_of`, `related_to`, and `powers`.
+- Preserve the source sentence and sentence index for each relationship.
+- Extract the first four-digit year in a relationship sentence as its timestamp.
+- Store source names and confidence metadata.
+- Keep years as relationship timestamps instead of standalone entities by
+  default.
+
+### Graph
+
+- Construct an in-memory directed knowledge graph.
+- Find entities by ID, name, or type.
+- Query incoming, outgoing, or bidirectional neighbors.
+- Find shortest directed or undirected paths with breadth-first search.
+- Create depth-limited connected subgraphs.
+- Calculate entity, relationship, type, and isolation statistics.
+
+### Export
+
+- Export graphs to JSON.
+- Export readable graph reports to Markdown.
+- Reload and validate previously exported SignalGraph JSON.
+
+### CLI
+
+- Analyze direct text or UTF-8 `.txt` and `.md` files.
+- Explore paths and neighbors in exported graphs.
+- Display graph statistics.
+- Generate and export connected subgraphs.
 
 ## Installation
 
@@ -85,62 +100,61 @@ Python 3.9 or newer is required. Run commands from the repository root.
 
 ## Quick Start
 
-Create a graph from direct text:
+### Analyze text
 
 ```bash
 python3 -m backend.cli analyze --text "Microsoft invested in OpenAI. OpenAI created GPT. GPT powers ChatGPT."
 ```
 
-This creates `output.json` and `output.md` by default.
-
-Find the shortest directed path:
+### Find the shortest path
 
 ```bash
 python3 -m backend.cli path output.json microsoft chatgpt
 ```
 
-List incoming and outgoing neighbors:
+### List neighbors
 
 ```bash
 python3 -m backend.cli neighbors output.json openai --direction both
 ```
 
-Display graph statistics:
+### Show graph statistics
 
 ```bash
 python3 -m backend.cli stats output.json
 ```
 
-Export a connected subgraph:
+### Export a subgraph
 
 ```bash
 python3 -m backend.cli subgraph output.json openai --depth 2 --json subgraph.json --markdown subgraph.md
 ```
 
+The analyze command creates `output.json` and `output.md` by default.
+
 ## Architecture
 
 ```text
-Raw text or Markdown
-        │
-        ▼
-    TextParser
-        │
-        ▼
-  EntityExtractor
-        │
-        ▼
-RelationshipExtractor ──► evidence, source, timestamp, confidence
-        │
-        ▼
-  KnowledgeGraph
-        │
-        ├──► JSONExporter / MarkdownExporter
-        │
-        └──► paths / neighbors / subgraphs / statistics
+Raw Text
+    │
+    ▼
+Text Parser
+    │
+    ▼
+Entity Extractor
+    │
+    ▼
+Relationship Extractor
+    │
+    ▼
+Knowledge Graph
+    ├── JSON Export
+    ├── Markdown Export
+    └── CLI Queries
 ```
 
-The pipeline separates parsing, extraction, graph construction, serialization,
-and querying so each component can be used independently.
+Parsing, extraction, graph construction, serialization, and querying are kept
+in separate modules so they can be used independently.
 
 ## Project Structure
 
