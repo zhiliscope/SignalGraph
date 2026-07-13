@@ -1,21 +1,37 @@
-## SignalGraph
+<h1 align="center">SignalGraph</h1>
 
-> **Connect what was never connected.**
+<p align="center">
+  <strong>Connect what was never connected.</strong>
+</p>
 
-SignalGraph turns scattered information into connected knowledge.
+<p align="center">
+  Turn scattered information into connected knowledge.
+</p>
 
-Instead of leaving facts isolated across articles, notes, reports, and research papers, SignalGraph discovers explicit relationships between them and organizes everything into a structured network that can be explored, queried, exported, and reused.
+<p align="center">
+  SignalGraph discovers explicit relationships hidden across articles, notes,
+  reports, research papers, and other unstructured text, transforming scattered
+  facts into an explorable network that can be queried, exported, and reused.
+</p>
 
-Built with deterministic, rule-based extraction, explainable evidence, and zero external AI dependencies.
+<p align="center">
+  Deterministic · Explainable · Pure Python · Zero External AI Dependencies
+</p>
+
+<p align="center">
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
-![Pure Python](https://img.shields.io/badge/implementation-pure%20Python-blue.svg)
-![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)
-![CLI](https://img.shields.io/badge/interface-CLI-4c8bf5.svg)
-![Cross Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey.svg)
-![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#contributing)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+![Implementation](https://img.shields.io/badge/implementation-pure%20Python-blue)
+![Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)
+![Interface](https://img.shields.io/badge/interface-CLI-4c8bf5)
+![Platform](https://img.shields.io/badge/platform-cross--platform-lightgrey)
+![Status](https://img.shields.io/badge/status-alpha-orange)
+![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
+
+</p>
+
+---
 
 ## Highlights
 
