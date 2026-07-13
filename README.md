@@ -1,3 +1,5 @@
+## SignalGraph
+
 > **Connect what was never connected.**
 
 SignalGraph turns scattered information into connected knowledge.
