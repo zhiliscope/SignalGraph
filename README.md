@@ -1,129 +1,167 @@
 # SignalGraph
 
-> A knowledge graph engine for exploring relationships and patterns in public information.
+> Transform unstructured information into structured knowledge.
 
-SignalGraph transforms scattered public information into connected knowledge graphs, helping users discover hidden relationships, emerging trends, and structures behind complex information systems.
+SignalGraph is an open-source Python framework for decomposing information into entities, relationships, timelines, and knowledge graphs.
 
-## Overview
+Instead of treating text as plain documents, SignalGraph transforms information into structured representations that are easier to analyze, visualize, and understand.
 
-The world produces massive amounts of information every day, but meaningful connections are often hidden.
+---
 
-SignalGraph explores how information can be collected, structured, and represented as a dynamic graph.
+## Philosophy
 
-Instead of viewing information as isolated pieces, SignalGraph focuses on understanding:
+Information is often fragmented.
 
-- How entities are connected
-- How information evolves over time
-- How patterns emerge from complex systems
+SignalGraph aims to answer questions like:
 
-## Concept
+- What are the important entities?
+- How are they connected?
+- What relationships exist?
+- When did events happen?
+- Where does the information come from?
+
+The goal is not simply to generate a graph.
+
+The goal is to **decompose information into a structured representation** that can be explored, analyzed, and reused.
+
+---
+
+## How It Works
 
 ```
-Public Information
-
-        ↓
-
-Information Extraction
-
-        ↓
-
-Entity & Relationship Discovery
-
-        ↓
-
+Raw Information
+       │
+       ▼
+Information Decomposition
+       │
+       ├── Entities
+       ├── Relationships
+       ├── Timeline
+       ├── Sources
+       └── Evidence
+       │
+       ▼
 Knowledge Graph
-
-        ↓
-
-Insight & Visualization
+       │
+       ▼
+Analysis & Visualization
 ```
 
-## Features
-
-🚧 Currently under development
-
-- [ ] Information collection from public sources
-- [ ] Entity extraction and classification
-- [ ] Relationship graph generation
-- [ ] Interactive graph visualization
-- [ ] Timeline and trend analysis
-- [ ] AI-assisted information analysis
+---
 
 ## Example
 
-Input:
+Input
 
-```
-A collection of public articles, discussions, and documents
-```
+```text
+Microsoft invested in OpenAI.
 
-Output:
+OpenAI released GPT-4o in 2024.
 
-```
-        Entity A
-
-           |
-        relates to
-
-           |
-
-        Entity B
-
-           |
-        mentioned in
-
-           |
-
-        Entity C
+GPT-4o powers ChatGPT.
 ```
 
-SignalGraph aims to reveal the hidden structure behind fragmented information.
+Output
 
-## Technology Stack
+```text
+Entities
 
-Planned:
+• Microsoft
+• OpenAI
+• GPT-4o
+• ChatGPT
+• 2024
 
-- Python
-- Natural Language Processing (NLP)
-- Knowledge Graph
-- Graph Algorithms
-- React
-- TypeScript
-- Data Visualization
+Relationships
+
+Microsoft ── invested_in ──► OpenAI
+
+OpenAI ── released ──► GPT-4o
+
+GPT-4o ── powers ──► ChatGPT
+```
+
+---
+
+## Project Goals
+
+SignalGraph is designed to work with any kind of public information, including:
+
+- News
+- Articles
+- Research papers
+- Technical documentation
+- Books
+- GitHub projects
+- Historical events
+- Notes
+- Plain text
+
+The framework is domain-independent.
+
+---
+
+## Current Status
+
+🚧 Early Development (v0.1)
+
+Current focus:
+
+- Core graph model
+- Information decomposition pipeline
+- Rule-based entity extraction
+- Rule-based relationship extraction
+- JSON exporter
+- Markdown exporter
+
+---
 
 ## Roadmap
 
-### Phase 1 — Graph Foundation
+### v0.1
 
-- Design core data structures
-- Create entity and relationship models
-- Build graph generation engine
+- Core graph engine
+- Parser
+- Entity extraction
+- Relationship extraction
+- Export system
 
-### Phase 2 — Information Processing
+### v0.2
 
-- Add text processing pipeline
-- Extract entities and relationships
-- Process public information sources
+- Timeline extraction
+- Source tracking
+- Confidence scoring
+- Graph serialization
 
-### Phase 3 — Visualization
+### v0.3
 
-- Build interactive knowledge graph interface
-- Add timeline and relationship exploration
+- Plugin system
+- Multiple input formats
+- Visualization support
 
-### Phase 4 — Intelligence Layer
+### v1.0
 
-- Add AI-assisted analysis
-- Discover patterns and connections
+- Stable framework
+- Extensible architecture
+- Community plugins
 
-## Why SignalGraph?
+---
 
-Modern information systems are becoming increasingly complex.
+## Technology
 
-SignalGraph is an exploration of how we can better understand these systems by connecting information, relationships, and context.
+- Python
+- Knowledge Graph
+- Information Extraction
+- Graph Algorithms
+- Natural Language Processing
+
+---
 
 ## Contributing
 
-Contributions, ideas, and discussions are welcome.
+Contributions, discussions, and ideas are always welcome.
+
+---
 
 ## License
 
