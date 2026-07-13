@@ -1,14 +1,41 @@
 # SignalGraph
 
-> A knowledge graph engine for exploring relationships and patterns in public information.
+> Transform unstructured information into structured knowledge.
 
-SignalGraph transforms scattered public information into connected knowledge graphs, helping users discover hidden relationships, emerging trends, and structures behind complex information systems.
+SignalGraph is an open-source Python framework for decomposing unstructured
+information into entities, relationships, evidence, and knowledge graphs.
 
-## Overview
+Instead of focusing on a specific domain, SignalGraph provides a reusable way
+to understand complex information through structured decomposition. It can
+process news articles, research papers, technical documents, historical events,
+notes, Markdown, and plain text.
 
-The world produces massive amounts of information every day, but meaningful connections are often hidden.
+## Philosophy
 
-SignalGraph explores how information can be collected, structured, and represented as a dynamic graph.
+Information is often fragmented. SignalGraph aims to answer questions such as:
+
+- What are the important entities?
+- How are they connected?
+- What evidence supports each relationship?
+- When did an explicitly stated event happen?
+- Where did the information come from?
+
+The goal is not simply to generate a graph. The goal is to decompose information
+into a structured representation that can be explored, analyzed, and reused.
+
+## How It Works
+
+```text
+Raw text
+   ↓
+Text parsing
+   ↓
+Entity and relationship extraction
+   ↓
+Knowledge graph with source evidence
+   ↓
+JSON or Markdown export
+```
 
 ## Usage
 
@@ -60,114 +87,70 @@ path = graph.find_path("microsoft", "chatgpt")
 print(graph.format_path(path))
 ```
 
-Instead of viewing information as isolated pieces, SignalGraph focuses on understanding:
-
-- How entities are connected
-- How information evolves over time
-- How patterns emerge from complex systems
-
-## Concept
-
-```
-Public Information
-
-        ↓
-
-Information Extraction
-
-        ↓
-
-Entity & Relationship Discovery
-
-        ↓
-
-Knowledge Graph
-
-        ↓
-
-Insight & Visualization
-```
-
-## Features
-
-- [x] TXT and Markdown parsing
-- [x] Deterministic entity and relationship extraction
-- [x] Relationship evidence and source context
-- [x] In-memory knowledge graph generation
-- [x] JSON and Markdown export
-- [x] Graph path, neighbor, subgraph, and statistics queries
-- [x] Command-line interface
-
 ## Example
 
 Input:
 
-```
-A collection of public articles, discussions, and documents
+```text
+Microsoft invested in OpenAI.
+OpenAI created GPT.
+GPT powers ChatGPT.
 ```
 
 Output:
 
-```
-        Entity A
-
-           |
-        relates to
-
-           |
-
-        Entity B
-
-           |
-        mentioned in
-
-           |
-
-        Entity C
+```text
+Microsoft --[invested_in]--> OpenAI
+OpenAI --[created]--> GPT
+GPT --[powers]--> ChatGPT
 ```
 
-SignalGraph aims to reveal the hidden structure behind fragmented information.
+## Features
 
-## Technology Stack
+- TXT and Markdown parsing
+- Deterministic entity and relationship extraction
+- Relationship evidence, source context, timestamps, and confidence
+- In-memory knowledge graph generation
+- JSON loading and export
+- Markdown export
+- Directed and undirected path queries
+- Neighbor, connected-subgraph, and statistics queries
+- Command-line interface
+
+## Project Goals
+
+SignalGraph is domain-independent and designed for public information such as:
+
+- News and articles
+- Research papers and books
+- Technical documentation and GitHub projects
+- Historical events
+- Notes and plain text
+
+## Current Status
+
+SignalGraph is in early development at v0.1. The core graph, deterministic
+analysis pipeline, evidence preservation, exporters, JSON loader, command-line
+interface, and graph exploration engine are implemented.
+
+## Roadmap
+
+- Add configurable extraction rules
+- Support additional text-based document formats
+- Expand temporal and graph analysis
+- Stabilize the public Python API
+- Add a plugin architecture
+
+## Technology
 
 - Python standard library
 - Deterministic text processing
 - Knowledge graph data structures
 - Breadth-first graph algorithms
 
-## Roadmap
-
-### Phase 1 — Graph Foundation
-
-- Design core data structures
-- Create entity and relationship models
-- Build graph generation engine
-
-### Phase 2 — Information Processing
-
-- Add text processing pipeline
-- Extract entities and relationships
-- Process public information sources
-
-### Phase 3 — Extraction Expansion
-
-- Add more relationship patterns
-- Support additional text-based document formats
-
-### Phase 4 — Analysis Layer
-
-- Add configurable extraction rules
-- Expand graph analysis capabilities
-
-## Why SignalGraph?
-
-Modern information systems are becoming increasingly complex.
-
-SignalGraph is an exploration of how we can better understand these systems by connecting information, relationships, and context.
-
 ## Contributing
 
-Contributions, ideas, and discussions are welcome.
+Contributions, discussions, and ideas are welcome.
 
 ## License
 
