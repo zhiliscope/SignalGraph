@@ -1,10 +1,16 @@
 # SignalGraph
 
-**Turn unstructured text into explainable, queryable knowledge graphs with deterministic extraction.**
+> Connect scattered information.
 
-SignalGraph extracts entities, relationships, evidence, and metadata from
-unstructured text and organizes them into structured knowledge graphs. Its
-rule-based pipeline requires no LLMs and has zero runtime dependencies.
+SignalGraph transforms fragmented information into connected, structured
+relationships.
+
+It extracts entities, explicit relationships, evidence, timestamps, and
+metadata from unstructured text, then organizes them into a structure that can
+be explored, queried, exported, and reused.
+
+SignalGraph is deterministic, rule-based, explainable, pure Python, and has
+zero runtime dependencies.
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
@@ -19,7 +25,7 @@ rule-based pipeline requires no LLMs and has zero runtime dependencies.
 
 - Deterministic rule-based extraction
 - Explainable relationships with source evidence
-- In-memory knowledge graph querying
+- In-memory relationship querying
 - Pure Python with zero external runtime dependencies
 
 ## Example
@@ -42,8 +48,11 @@ OpenAI ──created────────▶ GPT
 GPT ──powers───────────▶ ChatGPT
 ```
 
-SignalGraph automatically transforms raw text into a queryable relationship
-graph.
+SignalGraph connects scattered facts into a structured relationship graph that
+can be explored, queried, and reused.
+
+Separate statements become part of one connected information structure instead
+of remaining isolated facts.
 
 ## Why SignalGraph?
 
@@ -54,7 +63,8 @@ graph.
 - **Reusable** — pipeline components can be imported independently.
 - **Pure Python** — the implementation requires Python 3.9 or newer.
 - **Zero external models** — analysis does not call model APIs or services.
-- **Easy integration** — graphs can be queried in Python or exchanged as JSON.
+- **Easy integration** — connected relationships can be queried in Python or
+  exchanged as JSON.
 
 ## Features
 
@@ -72,7 +82,7 @@ graph.
 
 ### Graph
 
-- Construct an in-memory directed knowledge graph.
+- Organize extracted facts in an in-memory directed relationship graph.
 - Find entities by ID, name, or type.
 - Query incoming, outgoing, or bidirectional neighbors.
 - Find shortest directed or undirected paths with breadth-first search.
@@ -81,14 +91,14 @@ graph.
 
 ### Export
 
-- Export graphs to JSON.
-- Export readable graph reports to Markdown.
+- Export connected relationship structures to JSON.
+- Export readable relationship reports to Markdown.
 - Reload and validate previously exported SignalGraph JSON.
 
 ### CLI
 
 - Analyze direct text or UTF-8 `.txt` and `.md` files.
-- Explore paths and neighbors in exported graphs.
+- Explore paths and neighbors in exported relationship data.
 - Display graph statistics.
 - Generate and export connected subgraphs.
 
@@ -155,14 +165,14 @@ Entity Extractor
 Relationship Extractor
     │
     ▼
-Knowledge Graph
+Connected Relationship Graph
     ├── JSON Export
     ├── Markdown Export
     └── CLI Queries
 ```
 
-Parsing, extraction, graph construction, serialization, and querying are kept
-in separate modules so they can be used independently.
+Parsing, extraction, relationship organization, serialization, and querying are
+kept in separate modules so they can be used independently.
 
 ## Project Structure
 
@@ -201,8 +211,8 @@ python3 -m backend.cli COMMAND
 
 ### `analyze`
 
-Parse text, extract entities and relationships, build a graph, and write the
-enabled output formats.
+Parse text, extract entities and relationships, connect the extracted facts,
+and write the enabled output formats.
 
 ```bash
 python3 -m backend.cli analyze [FILE] [OPTIONS]
@@ -338,7 +348,7 @@ packages.
 
 ### Current
 
-- Core entity, relationship, and knowledge graph models
+- Core entity, relationship, and graph models
 - Deterministic analysis pipeline with evidence preservation
 - JSON and Markdown serialization
 - Command-line analysis and graph exploration
