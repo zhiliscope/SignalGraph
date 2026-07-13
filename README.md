@@ -2,9 +2,11 @@
 
 > Transform unstructured information into structured knowledge.
 
-SignalGraph is an open-source Python framework for decomposing information into entities, relationships, timelines, and knowledge graphs.
+SignalGraph is an open-source Python framework for decomposing unstructured information into entities, relationships, timelines, and knowledge graphs.
 
-Instead of treating text as plain documents, SignalGraph transforms information into structured representations that are easier to analyze, visualize, and understand.
+Instead of focusing on a specific domain, SignalGraph provides a universal framework for understanding complex information systems through structured information decomposition.
+
+Whether the input is a news article, research paper, technical document, historical event, or plain text, SignalGraph transforms fragmented information into structured knowledge that can be analyzed, visualized, and reused.
 
 ---
 
